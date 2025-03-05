@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+sqlalchemy
+httpx
+psycopg2-binary
+pytest
+pytest-asyncio
+python-jose[cryptography]  # JWT
+passlib[bcrypt]  # hash de senhas
+ulid-py

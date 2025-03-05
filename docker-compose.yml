@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: postgre
+      POSTGRES_PASSWORD: "123"
+      POSTGRES_DB: dtLabs_database
+    ports:
+      - "0.0.0.0:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgre:123@db:0.0.0.0:5432/dtLabs_database
+
+volumes:
+  postgres_data:
